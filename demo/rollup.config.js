@@ -6,6 +6,7 @@ import { terser } from "rollup-plugin-terser";
 import sveltePreprocess from "svelte-preprocess";
 import typescript from "@rollup/plugin-typescript";
 import css from "rollup-plugin-css-only";
+import smoothVariables from "smooth-variables";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -42,6 +43,10 @@ export default {
     file: "public/build/bundle.js",
   },
   plugins: [
+    smoothVariables({
+      inputFilePath: "src/variables.ts",
+    }),
+
     svelte({
       preprocess: sveltePreprocess({ sourceMap: !production }),
       compilerOptions: {

@@ -1,7 +1,6 @@
 export interface SmoothVariablesRollupPluginOptions {
-  breakpointsFilePath: string;
+  inputFilePath: string;
   breakpointsExportName?: string;
-  variablesFilePath: string;
   variablesExportName?: string;
   outputFilePath?: string;
   verbose?: boolean;

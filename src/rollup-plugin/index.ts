@@ -2,8 +2,8 @@ import { compileVariables } from "./lib/compile-variables";
 import { SmoothVariablesRollupPluginOptions } from "./lib/SmoothVariablesRollupPluginOptions";
 
 const DEFAULT_OPTIONS: Partial<SmoothVariablesRollupPluginOptions> = {
-  breakpointsExportName: 'default',
-  variablesExportName: 'default',
+  breakpointsExportName: 'breakpoints',
+  variablesExportName: 'uiVariables',
   verbose: false,
 }
 
@@ -17,6 +17,8 @@ export default function smoothVariables(
 
   return {
     name: 'smooth-variables',
-    buildStart: async () => compileVariables(options, this),
+    buildStart: async function () {
+      return compileVariables(options, this)
+    },
   }
 }
